@@ -13,7 +13,7 @@ class CommentSpider(Spider):
         templateurl = 'https://movie.douban.com/subject/25823277/comments?start={}&limit=20&sort=new_score&status=P'
         for i in range(3201):
             url = templateurl.format(str(i * 20))
-            yield Request(url=url, callback=self.parse, meta={'dont_merge_cookies': True})
+            yield Request(url=url, callback=self.parse)
 
     def parse(self, response):
         selector = etree.HTML(response.text)
@@ -32,7 +32,7 @@ class CommentSpider(Spider):
 #         templateurl = 'https://movie.douban.com/subject/26430107/comments?start={}&limit=20&sort=new_score&status=P'
 #         for i in range(1601):
 #             url = templateurl.format(str(i * 20))
-#             yield Request(url=url, callback=self.parse, meta={'dont_merge_cookies': True})
+#             yield Request(url=url, callback=self.parse)
 #
 #     def parse(self, response):
 #         selector = etree.HTML(response.text)
@@ -50,7 +50,7 @@ class CommentSpider(Spider):
 #         templateurl = 'https://movie.douban.com/subject/26363254/comments?start={}&limit=20&sort=new_score&status=P'
 #         for i in range(9001):
 #             url = templateurl.format(str(i * 20))
-#             yield Request(url=url, callback=self.parse, meta={'dont_merge_cookies': True})
+#             yield Request(url=url, callback=self.parse)
 #
 #     def parse(self, response):
 #         selector = etree.HTML(response.text)
